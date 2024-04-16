@@ -1,4 +1,4 @@
-use <../../modules/squircle.scad>
+use <../../modules/superellipse.scad>
 use <../../modules/extrude_x.scad>
 
 $fn = 100;
@@ -9,8 +9,7 @@ difference() {
   translate([-21, 0, 24])
     rotate([0, 90])
     linear_extrude(height = 42)
-    scale([1.2, 1])
-    squircle(r = 23, n = 5);
+    superellipse(ra = 28, rb = 23, n = 5);
 
   t = tolerance;
 

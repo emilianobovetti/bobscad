@@ -1,19 +1,4 @@
-module squircle(r = 1, n = 3, $fn = 100) {
-  angle_step = round(360 / $fn);
-  r_n = r ^ n;
-  inv_n = 1 / n;
+use <./superellipse.scad>
 
-  section = [
-    for(angle = [0 : min(angle_step, 90) : 90]) [
-      (r_n / (1 + tan(angle) ^ n)) ^ inv_n,
-      (r_n / (1 + tan(angle) ^ -n)) ^ inv_n,
-    ]
-  ];
-
-  hull() polygon(points = [
-    each section,
-    for(p = section) [-p.x, p.y],
-    for(p = section) [-p.x, -p.y],
-    for(p = section) [p.x, -p.y],
-  ]);
-}
+module squircle(r = 1, n = 3, $fn = 100)
+  superellipse(ra = r, rb = r, n = n, $fn = $fn);
