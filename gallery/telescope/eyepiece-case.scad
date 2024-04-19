@@ -1,5 +1,5 @@
 use <../../modules/superellipse.scad>
-use <../../modules/extrude_x.scad>
+use <../../modules/translate-hull-each.scad>
 
 $fn = 100;
 
@@ -25,16 +25,14 @@ difference() {
     linear_extrude(height = 42)
     superellipse(ra = 6 + ehh, rb = 23, n = 5);
 
-  union() {
-    extrude_x(25) cylinder(d = 31.7 + ht, h = mfh + 0.1);
+  translate_hull_each([25, 0]) {
+    cylinder(d = 31.7 + ht, h = mfh + 0.1);
 
-    translate([0, 0, mfh]) {
-      extrude_x(25) cylinder(d = 33.7 + ht, h = bh + 0.1);
+    translate([0, 0, mfh]) cylinder(d = 33.7 + ht, h = bh + 0.1);
 
-      extrude_x(25) translate([0, 0, bh]) hull() {
-        cylinder(d = 33.7 + ht, h = 0.01);
-        translate([0, 0, reh]) cylinder(d = 38.3 + ht, h = 0.01);
-      }
+    translate([0, 0, mfh + bh]) hull() {
+      cylinder(d = 33.7 + ht, h = 0.01);
+      translate([0, 0, reh]) cylinder(d = 38.3 + ht, h = 0.01);
     }
   }
 
