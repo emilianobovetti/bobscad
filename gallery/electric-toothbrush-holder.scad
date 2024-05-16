@@ -1,3 +1,5 @@
+use <../modules/isosceles.scad>
+
 $fn = 50;
 
 module attach() {
@@ -27,12 +29,6 @@ module attach() {
     }
 
 }
-
-module isosceles(length, vertex_angle) polygon(points = [
-  [0, 0],
-  [length, 0],
-  [length * cos(vertex_angle), length * sin(vertex_angle)]
-]);
 
 module rounded_edge(radius, angle = 90)
   translate([0, 0, radius]) rotate([270, 90]) linear_extrude(height = depth) difference() {
