@@ -21,7 +21,7 @@ translate([0, 0, 3.3 + 4.5])
   translate([inner_diameter / 2, 0])
   circle(d = 1);
 
-difference() {
+render() difference() {
   linear_extrude(height = height) difference() {
     rotate(-3) isosceles(border_dist + 5, 11);
     isosceles(border_dist + 5.1, 5);

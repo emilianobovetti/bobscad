@@ -30,7 +30,7 @@ module base_solid() linear_extrude(height = thickness) difference() {
 }
 
 difference() {
-  base_solid();
+  render(convexity = 2) base_solid();
   translate([10, 10, -0.01]) cube([170, 90, thickness - 2.2 + 0.01]);
   translate([74, 25, thickness - 0.4]) linear_extrude(height = 1) {
     text("Bobfil", size = 15, font = "Noto Serif", halign = "center");
