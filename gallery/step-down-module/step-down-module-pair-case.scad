@@ -1,4 +1,4 @@
-use <../modules/superellipse.scad>
+use <../../modules/superellipse.scad>
 
 $fn = 100;
 
