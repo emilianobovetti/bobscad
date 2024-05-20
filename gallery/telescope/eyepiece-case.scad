@@ -1,5 +1,5 @@
 use <../../modules/superellipse.scad>
-use <../../modules/translate-hull-each.scad>
+use <../../modules/translate_hull_each.scad>
 
 $fn = 100;
 
