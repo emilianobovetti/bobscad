@@ -34,7 +34,7 @@ module rounded_edge(radius, angle = 90)
   translate([0, 0, radius]) rotate([270, 90]) linear_extrude(height = depth) difference() {
     intersection() {
       circle(r = radius);
-      isosceles(length = radius * 10, vertex_angle = angle);
+      isosceles(height = radius * 10, vertex_angle = angle);
     }
 
     circle(r = radius - thickness);
