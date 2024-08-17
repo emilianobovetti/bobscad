@@ -1,6 +1,6 @@
 use <../functions/reverse.scad>
 
-module superellipse(ra = 1, rb = 1, n = 3, $fn = 100) {
+module superellipse(ra = 1, rb = 1, n = 3) {
   inv_n = 1 / n;
   step = 90 / $fn * 4;
 
