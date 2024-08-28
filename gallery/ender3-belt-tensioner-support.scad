@@ -8,15 +8,15 @@ module round_corner(r) difference() {
   translate([r, r]) circle(r);
 }
 
-linear_extrude(height = 3) difference() {
+module body(thickness, s1, s2) linear_extrude(height = thickness) difference() {
   square([width, height]);
 
   // screw holes
-  translate([6, 10.1]) circle(r = 2.2);
-  translate([18, 10.1]) circle(r = 2.2);
+  translate([6, 10.1]) circle(d = s1);
+  translate([18, 10.1]) circle(d = s1);
 
-  translate([width - 3, height - 1.8 - 1.4]) circle(r = 1.8);
-  translate([width - 3, height - 1.8 * 2 - 1.4 * 2 - 11]) circle(r = 1.8);
+  translate([width - 3, height - 1.8 - 1.4]) circle(d = s2);
+  translate([width - 3, height - 1.8 * 2 - 1.4 * 2 - 11]) circle(d = s2);
 
   // stadium hole
   hull() {
@@ -52,3 +52,8 @@ linear_extrude(height = 3) difference() {
   translate([0,  20.2]) mirror([0, 1]) round_corner(2);
   translate([28,  height]) mirror([0, 1]) round_corner(2);
 }
+
+side = "left";
+
+body(thickness = 3, s1 = 4.5, s2 = 3.6);
+translate([0, 0, side == "right" ? -3 : 3]) body(thickness = 3, s1 = 8, s2 = 8);
