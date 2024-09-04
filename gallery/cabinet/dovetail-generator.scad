@@ -10,7 +10,7 @@ module pin(depth = dt_depth, offset = 0)
   offset(r = offset)
   dovetail(min_width = dt_min_width, max_width = dt_max_width, r1 = 1.2, r2 = 1.2, angle = 60);
 
-module dt_pin_section(width, min_margin = 0) {
+module dt_pin_section(width, min_margin = 2) {
   space = dt_min_width;
   pin_size = 2 * dt_max_width;
   section_size = width - 2 * min_margin;
@@ -37,7 +37,7 @@ module dt_socket(thickness) difference() {
     pin(depth = dt_depth + dt_clearance, offset = dt_clearance);
 }
 
-module dt_socket_section(width, thickness, min_margin = 0) {
+module dt_socket_section(width, thickness, min_margin = 2) {
   socket_thickness = thickness - dt_pin_section_thickness;
   height = socket_thickness - dt_clearance;
 
