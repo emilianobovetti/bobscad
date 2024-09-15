@@ -35,7 +35,7 @@ rotate([0, -90]) {
     floor_1_side_wall_4();
 }
 
-translate([rear_wall_width - wall_thickness, wall_thickness + floor_depth + space]) rotate([90, -90]) {
-  floor_1_rear_wall_1();
-  translate([(f1_wall_height - dt_depth) / 2 + space, 0]) floor_1_rear_wall_2();
+translate([-wall_thickness, floor_depth + space]) {
+  translate([rear_wall_width, wall_thickness]) rotate([90, -90]) floor_1_rear_wall_1();
+  translate([0, 0, (f1_wall_height - dt_depth) / 2 + space]) rotate([180, -90, 90]) floor_1_rear_wall_2();
 }

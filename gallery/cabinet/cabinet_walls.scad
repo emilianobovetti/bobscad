@@ -71,9 +71,9 @@ module floor_1_rear_wall_1() {
 module floor_1_rear_wall_2() {
   difference() {
     translate([dt_depth, 0]) rear_wall_body();
-    translate([f1_h + dt_depth - wall_thickness / 2, rear_wall_width / 2]) screw_hole(flip = 0);
+    translate([f1_h + dt_depth - wall_thickness / 2, rear_wall_width / 2, wall_thickness]) screw_hole(flip = 1);
   }
 
-  translate([dt_depth, rear_wall_width, wall_thickness])
-    rotate([0, 180, 90]) dt_socket_section(width = rear_wall_width, thickness = wall_thickness - dt_pin_section_thickness);
+  translate([dt_depth, 0])
+    rotate([0, 0, 90]) dt_socket_section(width = rear_wall_width, thickness = wall_thickness - dt_pin_section_thickness);
 }
