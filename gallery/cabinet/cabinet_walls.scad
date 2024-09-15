@@ -18,8 +18,8 @@ module floor_1_side_wall_1() translate([0, dt_depth]) {
   }
 
   translate([f1_h, -dt_depth]) cube([dt_depth, dt_depth, wall_thickness]);
-  translate([0, -dt_depth]) dt_pin_section(width = f1_h);
-  translate([f1_h, f1_side_w]) rotate(270) dt_socket_section(width = f1_side_w, thickness = wall_thickness);
+  translate([0, -dt_depth]) dt_pin_section(width = f1_h, thickness = dt_pin_section_thickness);
+  translate([f1_h, f1_side_w]) rotate(270) dt_socket_section(width = f1_side_w, thickness = wall_thickness - dt_pin_section_thickness);
 }
 
 module floor_1_side_wall_2() translate([0, dt_depth]) {
@@ -28,8 +28,8 @@ module floor_1_side_wall_2() translate([0, dt_depth]) {
     side_wall_screw_hole(flip = 0);
   }
 
-  rotate(90) translate([0, -f1_h - dt_depth]) dt_pin_section(width = f1_side_w);
-  translate([0, -dt_depth]) dt_socket_section(width = f1_h, thickness = wall_thickness);
+  rotate(90) translate([0, -f1_h - dt_depth]) dt_pin_section(width = f1_side_w, thickness = dt_pin_section_thickness);
+  translate([0, -dt_depth]) dt_socket_section(width = f1_h, thickness = wall_thickness - dt_pin_section_thickness);
 }
 
 module floor_1_side_wall_3() translate([dt_depth, 0]) {
@@ -38,8 +38,8 @@ module floor_1_side_wall_3() translate([dt_depth, 0]) {
     side_wall_screw_hole(trans = [f1_h - wall_thickness, 0, wall_thickness], flip = 1);
   }
 
-  translate([0, f1_side_w]) dt_pin_section(width = f1_h);
-  translate([-dt_depth, f1_side_w]) rotate(270) dt_socket_section(width = f1_side_w, thickness = wall_thickness);
+  translate([0, f1_side_w]) dt_pin_section(width = f1_h, thickness = dt_pin_section_thickness);
+  translate([-dt_depth, f1_side_w]) rotate(270) dt_socket_section(width = f1_side_w, thickness = wall_thickness - dt_pin_section_thickness);
 }
 
 module floor_1_side_wall_4() translate([dt_depth, 0]) {
@@ -48,8 +48,8 @@ module floor_1_side_wall_4() translate([dt_depth, 0]) {
     side_wall_screw_hole(trans = [f1_h - wall_thickness, 0, 0], flip = 0);
   }
 
-  rotate(90) dt_pin_section(width = f1_side_w);
-  translate([0, f1_side_w]) dt_socket_section(width = f1_h, thickness = wall_thickness);
+  rotate(90) dt_pin_section(width = f1_side_w, thickness = dt_pin_section_thickness);
+  translate([0, f1_side_w]) dt_socket_section(width = f1_h, thickness = wall_thickness - dt_pin_section_thickness);
 }
 
 f1_rear_h = (f1_wall_height - dt_depth) / 2;
@@ -65,7 +65,7 @@ module floor_1_rear_wall_1() {
     translate([wall_thickness / 2, rear_wall_width / 2]) screw_hole(flip = 0);
   }
 
-  translate([f1_rear_h + dt_depth, 0]) rotate(90) dt_pin_section(width = rear_wall_width);
+  translate([f1_rear_h + dt_depth, 0]) rotate(90) dt_pin_section(width = rear_wall_width, thickness = dt_pin_section_thickness);
 }
 
 module floor_1_rear_wall_2() {
@@ -75,5 +75,5 @@ module floor_1_rear_wall_2() {
   }
 
   translate([dt_depth, rear_wall_width, wall_thickness])
-    rotate([0, 180, 90]) dt_socket_section(width = rear_wall_width, thickness = wall_thickness);
+    rotate([0, 180, 90]) dt_socket_section(width = rear_wall_width, thickness = wall_thickness - dt_pin_section_thickness);
 }

@@ -5,10 +5,14 @@ space = (1 - $t) * 1.5 * dt_depth;
 use <./cabinet-floor.scad>
 
 translate([0, (floor_depth - dt_depth) / 2]) {
-  translate([0, space]) floor_rear_sec();
+  translate([0, space]) ground_floor_rear();
 
   translate([0, dt_depth, floor_thickness])
-    rotate([0, 180, 180]) floor_front_sec();
+    rotate([0, 180, 180]) ground_floor_front();
+
+  translate([0, space, f1_wall_height - floor_thickness + space]) middle_floor_rear();
+  translate([0, dt_depth, f1_wall_height + floor_thickness + space]) rotate([180, 0]) middle_floor_front();
+
 }
 
 use <./cabinet_walls.scad>

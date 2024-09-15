@@ -10,7 +10,7 @@ module pin(depth = dt_depth, offset = 0)
   offset(r = offset)
   dovetail(min_width = dt_min_width, max_width = dt_max_width, r1 = 1.2, r2 = 1.2, angle = 60);
 
-module dt_pin_section(width, min_margin = 2) {
+module dt_pin_section(width, thickness, min_margin = 2) {
   space = dt_min_width;
   pin_size = 2 * dt_max_width;
   section_size = width - 2 * min_margin;
@@ -19,27 +19,25 @@ module dt_pin_section(width, min_margin = 2) {
 
   assert(margin >= min_margin, "Error: min_margin constraint violated");
 
-  cube([width, dt_depth, dt_pin_section_thickness]);
+  cube([width, dt_depth, thickness]);
 
   for (idx = [0:count])
-    translate([idx * pin_size + margin, 0, dt_pin_section_thickness]) pin();
+    translate([idx * pin_size + margin, 0, thickness]) pin();
 }
 
 module dt_socket(thickness) difference() {
-  socket_thickness = thickness - dt_pin_section_thickness;
-  height = socket_thickness - dt_clearance;
+  height = thickness - dt_clearance;
 
   translate([-dt_max_width / 2 - dt_clearance, 0])
     cube([dt_max_width + 2 * dt_clearance, dt_depth, height]);
 
-  translate([0, -0.01, socket_thickness])
+  translate([0, -0.01, thickness])
     mirror([0, 0, 1])
     pin(depth = dt_depth + dt_clearance, offset = dt_clearance);
 }
 
 module dt_socket_section(width, thickness, min_margin = 2) {
-  socket_thickness = thickness - dt_pin_section_thickness;
-  height = socket_thickness - dt_clearance;
+  height = thickness - dt_clearance;
 
   space = dt_min_width;
   socket_size = 2 * dt_max_width;
