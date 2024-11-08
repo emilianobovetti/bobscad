@@ -1,7 +1,7 @@
 include <./parameters.scad>
 
-use <./dovetail-generator.scad>
-use <./screw-hole.scad>
+use <./dovetail_generator.scad>
+use <./screw_hole.scad>
 
 f1_h = (f1_wall_height - dt_depth) / 2;
 f1_side_w = (f1_side_wall_width - dt_depth) / 2;

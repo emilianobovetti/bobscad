@@ -2,7 +2,7 @@ include <./parameters.scad>
 
 space = (1 - $t) * 1.5 * dt_depth;
 
-use <./cabinet-floor.scad>
+use <./cabinet_floor.scad>
 
 translate([0, (floor_depth - dt_depth) / 2]) {
   translate([0, space]) ground_floor_rear();

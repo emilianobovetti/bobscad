@@ -1,7 +1,7 @@
 include <./parameters.scad>
 
-use <./dovetail-generator.scad>
-use <./hex-housing.scad>
+use <./dovetail_generator.scad>
+use <./hex_housing.scad>
 
 body_width = floor_width;
 body_depth = (floor_depth - dt_depth) / 2;
