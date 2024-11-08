@@ -1,7 +1,5 @@
 use <./copy_mirror.scad>
 
-$fn = 100;
-
 module dovetail(min_width = 1, max_width = 5, r1 = 1, r2 = 1, angle = 45) copy_mirror([1, 0]) {
   assert(r1 * 4 <= max_width, "Invalid arguments: either decrease r1 or increase max_width");
 

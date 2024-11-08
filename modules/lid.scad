@@ -3,8 +3,7 @@ module lid(
   edge_height,
   inner_border = 0,
   base_height = 1,
-  edge_thickness = 1,
-  $fn = 100
+  edge_thickness = 1
 ) {
   inner_radius = hole_diameter / 2;
   outer_radius = inner_radius + edge_thickness;
