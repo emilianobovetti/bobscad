@@ -7,13 +7,10 @@ module cubic_bezier(curve, debug = false) {
     for (idx = [0:latest]) {
       points = fill_undef(curve[idx]);
 
-      color([0.5, 0.5, 0.5, 0.5])
-        debug_point(points[1]);
+      debug_point(center=points[1], color=[1, 0, 0, 0.5], label=str(" ", idx, " "));
 
-      color([0.8, 0, 0, 0.5]) {
-        debug_point(points[0]);
-        debug_point(points[2]);
-      }
+      debug_point(center=points[0], color=[0, 0, 1, 0.5], label=str("₀", idx, " "));
+      debug_point(center=points[2], color=[0, 0, 1, 0.5], label=str(" ", idx, "₁"));
     }
   }
 
@@ -56,4 +53,14 @@ function fill_undef(points) =
 function fill_ctrl(p1, p2) =
   let (dx = p2.x - p1.x, dy = p2.y - p1.y) [p2.x + dx, p2.y + dy];
 
-module debug_point(center) translate(center) circle(d=0.1);
+module debug_point(center, color, label) translate(center) {
+    color(c=color) circle(d=0.1);
+
+    if (!is_undef(label)) {
+      assert(len(label) == 3, "Invalid argument: debug label must be 3 chars");
+
+      translate([-0.099, -0.038]) color([0.5, 1, 0.5])
+          text(text=label, font="mono", size=0.08);
+    }
+  }
+;

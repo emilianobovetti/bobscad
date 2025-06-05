@@ -5,7 +5,7 @@ module add_nut_hole() {
     else
       children();
 
-    color([0.7, 0.7, 0.7]) translate([0, 0, 2])
-        cylinder(d=15.5, h=6.3, $fn=6);
+    color([0.7, 0.7, 0.7]) translate([0, 0, 1])
+        cylinder(d=16, h=6.4, $fn=6);
   }
 }
