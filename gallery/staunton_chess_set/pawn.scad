@@ -2,7 +2,7 @@
 // Base diameter should measure 40-50% of piece height (20 to 25)
 
 use <../../modules/cubic_bezier.scad>
-use <./add_nut_hole.scad>
+use <./add_nut_embedding.scad>
 
 $fn = 100;
 
@@ -35,4 +35,4 @@ module pawn() {
   translate([0, 0, 42.3]) sphere(d=15.4);
 }
 
-add_nut_hole() pawn();
+add_nut_embedding() pawn();

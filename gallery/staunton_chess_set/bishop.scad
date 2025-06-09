@@ -2,7 +2,8 @@
 // Base diameter should measure 40-50% of piece height (28 to 35)
 
 use <../../modules/cubic_bezier.scad>
-use <./add_nut_hole.scad>
+use <../../modules/ring.scad>
+use <./add_nut_embedding.scad>
 
 $fn = 100;
 
@@ -42,4 +43,4 @@ module bishop() {
   }
 }
 
-add_nut_hole() bishop();
+add_nut_embedding() bishop();

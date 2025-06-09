@@ -6,7 +6,7 @@ use <../../modules/cubic_bezier.scad>
 use <../../modules/squared_circle.scad>
 use <../../functions/is_2d_point.scad>
 use <../../functions/normalize_3d_point.scad>
-use <./add_nut_hole.scad>
+use <./add_nut_embedding.scad>
 
 $fn = 100;
 
@@ -112,4 +112,4 @@ function reduce_size(size, diff) =
   : is_2d_point(size) ? [size.x - diff, size.y - diff]
   : assert(false, "Invalid argument: expected diameter or 2d size");
 
-add_nut_hole() knight();
+add_nut_embedding() knight();
