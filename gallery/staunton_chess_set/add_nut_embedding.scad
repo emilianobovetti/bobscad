@@ -18,9 +18,9 @@ module add_nut_embedding(count = 1) {
   }
 }
 
-m8_s = 14.4;
+m8_s = 13.2;
 m8_d = m8_s * sqrt(4 / 3);
-m8_h = 6.4;
+m8_h = 6.5;
 m8_i = 6.1;
 
 module m8_nut() difference() {
