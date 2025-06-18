@@ -8,10 +8,10 @@ use <./add_nut_embedding.scad>
 
 $fn = 100;
 
-// 39.5 / 95 =~ 0.416
-// %cylinder(h=95, d=39.5);
+// 39.1 / 95 =~ 0.41
+// %cylinder(h=95, d=39.1);
 
-module king() scale(1.038) {
+module king() scale(1.027) {
     render(convexity=2) difference() {
         import(file="WCC_King.stl");
 
@@ -32,15 +32,15 @@ module king() scale(1.038) {
           ]
         );
 
-    translate([-1.5, 0, 83.2]) rotate([90, 0, 90])
-        linear_extrude(height=3) copy_mirror([1, 0]) cubic_bezier(
+    translate([-1.75, 0, 83.2]) rotate([90, 0, 90])
+        linear_extrude(height=3.5) copy_mirror([1, 0]) cubic_bezier(
               debug=false, curve=[
-                [undef, [3.7, 0], [2.7, 0]],
-                [undef, [2, 1.5], [2, 2.2]],
-                [[2.4, 2], [4, 2.76], [4.5, 3]],
-                [[4, 4.6], [4.7, 5.6], [1, 5.6]],
-                [[1.7, 5.6], [2, 8.3], [2.2, 8.3]],
-                [[1, 8.3], [0, 8.3], undef],
+                [undef, [4, 0], [2.7, 0]],
+                [undef, [2, 2.5], [2, 3.2]],
+                [[2.9, 3], [4.5, 3.76], [5, 4]],
+                [[4.5, 5.6], [5, 6.6], [1.5, 6.6]],
+                [[2, 6.6], [2.3, 9.3], [2.5, 9.3]],
+                [[1, 9.3], [0, 9.3], undef],
                 [[0, 0], [0, 0], undef],
               ]
             );
