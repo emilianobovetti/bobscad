@@ -27,4 +27,4 @@ module queen() {
   translate([0, 0, 81]) sphere(2.5);
 }
 
-add_nut_embedding(on_layer1=2) queen();
+add_nut_embedding(count=2) queen();

@@ -1,21 +1,30 @@
-use <../../modules/copy_mirror.scad>
+use <../../modules/copy_translate.scad>
 
-module add_nut_embedding(on_layer1 = 1) {
-  assert(on_layer1 > 0, "add_nut_embedding: argument must be positive");
-  assert(on_layer1 < 3, "add_nut_embedding: unsupported number of embedding");
+module add_nut_embedding(count = 1) {
+  assert(count > 0, "add_nut_embedding: argument must be positive");
+  assert(count < 3, "add_nut_embedding: unsupported number of embedding");
 
   difference() {
     if ($preview)
-      %color([1, 0.85, 0, 0.7]) children();
+      color([1, 0.85, 0, 0.8]) children();
     else
       children();
 
-    color([0.7, 0.7, 0.7]) translate([0, 0, 1]) if (on_layer1 == 1) {
+    color([0.7, 0.7, 0.7]) translate([0, 0, 1]) if (count == 1) {
         m8_nut();
-      } else if (on_layer1 == 2) {
-        copy_mirror([0, 1]) translate([0, 7]) m8_nut();
+      } else if (count == 2) {
+        copy_translate([0, 0, m8_h]) m8_nut();
       }
   }
 }
 
-module m8_nut() cylinder(d=16, h=6.4, $fn=6);
+m8_s = 14.4;
+m8_d = m8_s * sqrt(4 / 3);
+m8_h = 6.4;
+m8_i = 6.1;
+
+module m8_nut() difference() {
+    cylinder(d=m8_d, h=m8_h, $fn=6);
+
+    translate([0, 0, -0.1]) cylinder(d=m8_i, h=m8_h + 0.2);
+  }
