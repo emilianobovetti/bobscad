@@ -4,6 +4,7 @@
 use <../../modules/cubic_bezier.scad>
 use <../../modules/ring.scad>
 use <./add_nut_embedding.scad>
+use <./split_in_parts.scad>
 
 $fn = 100;
 
@@ -51,16 +52,6 @@ module pawn() {
   translate([0, 0, 42.3]) sphere(d=15.4);
 }
 
-if (part_idx == 0) {
-  add_nut_embedding() %pawn();
-} else {
-  intersection() {
-    add_nut_embedding() pawn();
-
-    if (part_idx == 1) {
-      cylinder(h=3.7, d=25);
-    } else if (part_idx == 2) {
-      translate([0, 0, 3.7]) cylinder(h=50, d=25);
-    }
+split_in_parts(part_idx=part_idx) add_nut_embedding(cut_height=3.7, count=1) {
+    if (part_idx == 0) %pawn(); else pawn();
   }
-}
