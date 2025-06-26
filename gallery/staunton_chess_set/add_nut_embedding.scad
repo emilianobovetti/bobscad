@@ -23,7 +23,7 @@ module add_nut_embedding(cut_height, count = 1) {
         copy_translate([0, 0, m8_h]) m8_nut();
       }
 
-      translate([0, 0, cut_height - 0.01]) hexagonal_nut(s=m8_s + 0.6, h=0.8, i=m8_i + 0.1);
+      translate([0, 0, cut_height - 0.01]) hexagonal_nut(s=m8_s + 0.4, h=0.8, i=m8_i + 0.1);
     }
   }
 }

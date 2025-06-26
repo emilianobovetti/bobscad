@@ -21,9 +21,10 @@ module pawn() {
 
         translate([0, 0, 35]) ring(inner=13, outer=22, height=3.5);
         translate([-10, -10, 39.96]) cube(20);
+        cylinder(d=30, h=4.07);
       }
 
-    cylinder(d=29.16, h=3.8);
+    base(d=29.16, h=4.07);
 
     translate([0, 0, 32]) rotate_extrude()
         cubic_bezier(
@@ -52,6 +53,21 @@ module pawn() {
   translate([0, 0, 42.3]) sphere(d=15.4);
 }
 
-split_in_parts(part_idx=part_idx) add_nut_embedding(cut_height=3.7, count=1) {
+split_in_parts(part_idx=part_idx) add_nut_embedding(cut_height=3.711, count=1) {
     if (part_idx == 0) %pawn(); else pawn();
   }
+
+module base(d, h) {
+  r = d / 2;
+
+  rotate_extrude() cubic_bezier(
+      debug=false, curve=[
+        [undef, [r - 0.5, 0], [r - 0.5, 0]],
+        [[r, 0.6], [r, 0.6], undef],
+        [[r, h - 0.27], [r, h - 0.27], [r, h]],
+        [[r - 0.6, h], [r - 1, h], undef],
+        [[0, h], [0, h], undef],
+        [[0, 0], [0, 0], undef],
+      ]
+    );
+}
