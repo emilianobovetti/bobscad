@@ -46,4 +46,4 @@ module king() scale(1.027) {
             );
   }
 
-add_nut_embedding(count=2) king();
+king();

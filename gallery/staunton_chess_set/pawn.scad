@@ -53,7 +53,7 @@ module pawn() {
   translate([0, 0, 42.3]) sphere(d=15.4);
 }
 
-split_in_parts(part_idx=part_idx) add_nut_embedding(cut_height=3.711, count=1) {
+split_in_parts(cut_height=3.711, part_idx=part_idx) add_nut_embedding(cut_height=3.711, count=1) {
     if (part_idx == 0) %pawn(); else pawn();
   }
 
