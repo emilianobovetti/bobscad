@@ -4,6 +4,7 @@
 use <../../modules/cubic_bezier.scad>
 use <../../modules/ring.scad>
 use <./add_nut_embedding.scad>
+use <./piece_base.scad>
 
 $fn = 100;
 
@@ -15,18 +16,20 @@ module rook() scale([0.769, 0.769, 0.93]) {
         import(file="WCC_Rook.stl");
 
         translate([0, 0, 47]) ring(inner=27.5, outer=30, height=3);
+        translate([0, 0, 51]) cylinder(d=30, h=15);
+        cylinder(d=36, h=4.08);
       }
 
+    piece_base(d=35.74, h=4.08);
+
     translate([0, 0, 49.5]) difference() {
-        render(convexity=2) ring(inner=17, outer=25.5, height=9.7);
+        render(convexity=2) ring(inner=18, outer=25.5, height=9.7);
 
         for (idx = [0:5])
           rotate(14 + 360 / 5 * idx)
             translate([10, 0, 9])
               cube([10, 2.3, 3], center=true);
       }
-
-    cylinder(d=35.73, h=3.7);
 
     translate([0, 0, 43]) rotate_extrude()
         cubic_bezier(

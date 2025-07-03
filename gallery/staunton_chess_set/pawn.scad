@@ -5,6 +5,7 @@ use <../../modules/cubic_bezier.scad>
 use <../../modules/ring.scad>
 use <./add_nut_embedding.scad>
 use <./split_in_parts.scad>
+use <./piece_base.scad>
 
 $fn = 100;
 
@@ -24,7 +25,7 @@ module pawn() {
         cylinder(d=30, h=4.07);
       }
 
-    base(d=29.16, h=4.07);
+    piece_base(d=29.16, h=4.07);
 
     translate([0, 0, 32]) rotate_extrude()
         cubic_bezier(
@@ -53,21 +54,8 @@ module pawn() {
   translate([0, 0, 42.3]) sphere(d=15.4);
 }
 
-split_in_parts(cut_height=3.711, part_idx=part_idx) add_nut_embedding(cut_height=3.711, count=1) {
+*split_in_parts(cut_height=3.711, part_idx=part_idx) add_nut_embedding(cut_height=3.711, count=1) {
     if (part_idx == 0) %pawn(); else pawn();
   }
 
-module base(d, h) {
-  r = d / 2;
-
-  rotate_extrude() cubic_bezier(
-      debug=false, curve=[
-        [undef, [r - 0.5, 0], [r - 0.5, 0]],
-        [[r, 0.6], [r, 0.6], undef],
-        [[r, h - 0.27], [r, h - 0.27], [r, h]],
-        [[r - 0.6, h], [r - 1, h], undef],
-        [[0, h], [0, h], undef],
-        [[0, 0], [0, 0], undef],
-      ]
-    );
-}
+pawn();
