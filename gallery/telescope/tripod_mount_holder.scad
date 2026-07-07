@@ -7,7 +7,7 @@ thickness = 5;
 height = 40;
 
 linear_extrude(height = height) copy_mirror([0, 1]) translate([0, 31.46]) {
-  translate([0, 1]) chord(l = 22, h = 2.5, t = thickness);
+  translate([0, 1]) chord_lh(l = 22, h = 2.5, offset_out = thickness);
 
   copy_mirror([1, 0]) translate([22 / 2, 0]) hull() {
     translate([0, 1]) rotate(67) square([thickness, 0.1]);
