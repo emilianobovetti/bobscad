@@ -1,8 +1,8 @@
 include <./params.scad>
 
+use <../../modules/threads.scad>
 use <./base.scad>
 use <./wall.scad>
-use <./threads.scad>
 
 module canister() {
   base();

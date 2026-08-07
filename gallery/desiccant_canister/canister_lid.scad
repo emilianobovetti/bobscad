@@ -1,7 +1,7 @@
 include <./params.scad>
 
+use <../../modules/threads.scad>
 use <./split_shape.scad>
-use <./threads.scad>
 
 module lid() {
   extrude_thread_profile(h=threads_height) difference() {
