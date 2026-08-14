@@ -3,6 +3,8 @@ use <../../modules/threads.scad>
 $fa = 3;
 $fs = 0.3;
 
+piece="I"; // [I:Inner, O:Outer, P:Preview]
+
 height = 15;
 hole_diameter = 80;
 mount_diameter = 113.2;
@@ -42,13 +44,17 @@ module p2() {
     }
 }
 
-*intersection() {
-  union() {
-    translate([0, 0, 2]) p1();
-    p2();
+if (piece == "I") {
+  p1();
+} else if (piece == "O") {
+  p2();
+} else {
+  intersection() {
+    union() {
+      translate([0, 0, 2]) p1();
+      p2();
+    }
+
+    cube(100);
   }
-
-  cube(100);
 }
-
-p1();
